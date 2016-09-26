@@ -25,5 +25,5 @@ class UniformLanguageModel:
     for token in sentence: # iterate over words in the sentence
       score += probability
     # NOTE: a simpler method would be just score = sentence.size() * - Math.log(words.size()).
-    # we show the 'for' loop for insructive purposes.
+    # we show the 'for' loop for instructive purposes.
     return score
