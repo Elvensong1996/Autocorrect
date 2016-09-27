@@ -63,18 +63,18 @@ class CustomLanguageModel:
       if i >= 1:
         biagramlist = [sentence[i - 1], sentence[i]]
         if self.biagramcount[tuple(biagramlist)] != 0:
-          biagramProb = math.log(0.4) + math.log(float(self.biagramcount[tuple(biagramlist)]) /
+          biagramProb = math.log(float(self.biagramcount[tuple(biagramlist)]) /
                                  self.unigramcount[sentence[i - 1]])
           score += biagramProb
 
         # If all else fail back-off to unigram
         else:
-          unigramProb = math.log(0.4) + math.log(float(self.unigramcount[sentence[i]] + 1) /
+          unigramProb = math.log(float(self.unigramcount[sentence[i]] + 1) /
                                            (self.totals + len(self.unigramcount)))
           score += unigramProb
 
       else: #if i = 0
-        score += math.log(0.4) + math.log(float(self.unigramcount[sentence[i]] + 1) /
+        score += math.log(0.9) + math.log(float(self.unigramcount[sentence[i]] + 1) /
                                            (self.totals + len(self.unigramcount)))
 
     return score
